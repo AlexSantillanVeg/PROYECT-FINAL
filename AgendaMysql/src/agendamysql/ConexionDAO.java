@@ -24,19 +24,19 @@
         List<DatosDTO>listaDatos = new ArrayList<>();
 
         private void conecta(){
-            String user="root"; 
-            String password="";
-            String url= "jdbc:mysql://localhost:3306/4to20201?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";  
-
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver"); 
-                   conexion = DriverManager.getConnection(url, user, password);
-
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(ConexionDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+               String user = "root";
+        String password = "9926";
+        String url = "jdbc:mysql://localhost:3306/4to20201?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conexion = DriverManager.getConnection(url, user, password);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConexionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+    }
         public boolean inserta(DatosDTO datos){
             boolean estado = true; 
             try{
@@ -96,6 +96,8 @@
                 ps.setString(3, datos.getSexo());
                 ps.setInt(4, datos.getId()); 
                 ps.executeUpdate(); 
+                
+                
             }catch(SQLException ex){
             estado = false;
 
